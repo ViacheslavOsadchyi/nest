@@ -1,3 +1,4 @@
+import { CreateCountryDto } from './../../dto/create-country.dto';
 import { Injectable } from '@nestjs/common';
 import countries from 'src/learning/consts/countries';
 
@@ -12,5 +13,9 @@ export class CountriesService {
 
     async findAll () {
         return countries;
+    }
+
+    async create (createCountryDto: CreateCountryDto) {
+        this.countries.push(createCountryDto);
     }
 }

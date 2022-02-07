@@ -6,3 +6,6 @@ cd controllers
 nest generate controller countries
 cd ../services
 nest generate service countries
+
+npm install --save class-validator
+npm install --save class-transformer
