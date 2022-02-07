@@ -1,0 +1,8 @@
+nest generate module learning
+cd src/learning
+mkdir controllers
+mkdir services
+cd controllers
+nest generate controller countries
+cd ../services
+nest generate service countries
