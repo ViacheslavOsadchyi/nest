@@ -1,6 +1,7 @@
+import { CountryCreatedDto } from './../../dto/country-created.dto';
 import { CreateCountryDto } from './../../dto/create-country.dto';
 import { CountriesService } from './../../services/countries/countries.service';
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, ClassSerializerInterceptor, Controller, Get, Post, UseInterceptors } from '@nestjs/common';
 
 @Controller('countries')
 export class CountriesController {
@@ -13,8 +14,9 @@ export class CountriesController {
         return this.countriesService.findAll();
     }
 
+    @UseInterceptors(ClassSerializerInterceptor)
     @Post()
-    create(@Body() createCountryDto: CreateCountryDto) {
-      this.countriesService.create(createCountryDto);
+    create(@Body() createCountryDto: CreateCountryDto): Promise<CountryCreatedDto> {
+      return this.countriesService.create(createCountryDto);
     }
 }
